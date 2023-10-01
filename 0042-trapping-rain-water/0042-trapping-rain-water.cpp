@@ -10,11 +10,11 @@ public:
             {
                  l=i;
                 i++;
-                if(i==height.size())
+                if(i>=height.size())
                     break;
               
             }
-                if(i==height.size())
+                if(i>=height.size())
                     break;
             dif=height[l]-height[i];
             sum+=dif;
