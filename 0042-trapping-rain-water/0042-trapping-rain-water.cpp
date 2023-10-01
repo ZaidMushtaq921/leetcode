@@ -27,7 +27,7 @@ public:
                 m=i;
             }
             dif=height[l]-height[m];
-            sum=sum-dif;
+            sum-=dif;
         }
         
         
