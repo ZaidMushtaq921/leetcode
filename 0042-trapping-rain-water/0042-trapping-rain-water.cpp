@@ -14,7 +14,7 @@ public:
                     break;
               
             }
-                if(i>=height.size())
+                if(i==height.size())
                     break;
             dif=height[l]-height[i];
             sum+=dif;
