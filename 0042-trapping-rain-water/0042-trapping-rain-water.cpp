@@ -8,13 +8,13 @@ public:
         {
             while(height[l]<=height[i])
             {
-                 l=i;
+                  l=i;
                 i++;
                 if(i>=height.size())
                     break;
               
             }
-                if(i>=height.size())
+                        if(i>=height.size())
                     break;
             dif=height[l]-height[i];
             sum+=dif;
@@ -28,7 +28,10 @@ public:
             }
             dif=height[l]-height[m];
             sum-=dif;
+          
         }
+        
+        
         return sum;
         
         
