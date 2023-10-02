@@ -6,8 +6,9 @@ public:
         int mid=(nums.size()/2);
         while(mid<nums.size())
         {
-            ans.push_back(nums[s++]);
-            ans.push_back(nums[mid++]);
+            ans.push_back(nums[s]);
+            ans.push_back(nums[mid]);
+            s++,mid++;
         }
         return ans;
     }
