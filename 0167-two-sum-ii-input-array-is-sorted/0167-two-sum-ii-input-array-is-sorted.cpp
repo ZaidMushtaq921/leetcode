@@ -5,11 +5,11 @@ public:
         int l = numbers.size() - 1;
         
         while (s <= l) {
-            int sum = numbers[s] + numbers[l];
-            if (sum == target) {
+            //int sum = numbers[s] + numbers[l];
+            if (numbers[s] + numbers[l] == target) {
             return {s+1,l+1};
                 }
-            else if (sum < target) {
+            else if (numbers[s] + numbers[l] < target) {
                 s++;
             } else {
                 l--;
