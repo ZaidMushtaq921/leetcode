@@ -11,15 +11,15 @@ public:
               if(i==nums.size()-1)
             {
                 ans= nums[i];
-                break; 
+                  return ans; 
             }
             if(nums[i]!=nums[i+1])
             {
                 ans= nums[i];
-                break;
+                  return ans;
             }
         }
         
-        return ans;
+      return 0;
     }
 };
