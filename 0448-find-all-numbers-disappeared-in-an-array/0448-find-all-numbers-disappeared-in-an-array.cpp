@@ -4,8 +4,8 @@ public:
       vector<int> ans;
         int count=1;
         sort(nums.begin(),nums.end());
-        int n=nums.size();
-        for(int i=0;i<n;i++)
+        // int n=nums.size();
+        for(int i=0;i<nums.size();i++)
         {
             if(nums[i]==count)
             {
@@ -18,7 +18,7 @@ public:
                 i--;
             }
         }
-        for(int i=count;i<=n;i++)
+        for(int i=count;i<=nums.size();i++)
         {
             ans.push_back(i);
         }
