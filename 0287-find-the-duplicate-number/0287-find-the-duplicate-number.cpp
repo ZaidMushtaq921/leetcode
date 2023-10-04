@@ -7,6 +7,10 @@ public:
         while(f<l)
         {
             int mid=(f+l)/2;
+            if(arr[f]==arr[l])
+            {
+                return arr[f];
+            }
             if(arr[mid]>=mid+1)
             {
                 f=mid+1;
@@ -16,5 +20,4 @@ public:
         }
         return arr[f];
     }
-   
 };
