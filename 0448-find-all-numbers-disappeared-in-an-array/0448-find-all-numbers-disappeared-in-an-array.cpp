@@ -13,8 +13,8 @@ public:
             }
             else if(nums[i]>count)
             {
-                ans.push_back(count);
-                count++;
+                ans.push_back(count++);
+                // count++;
                 i--;
             }
         }
