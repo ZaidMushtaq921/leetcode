@@ -1,40 +1,31 @@
 class Solution {
+    bool areVectorsEqual(vector<int> a, vector<int> b){
+        for(int i=0; i<26; i++){
+            if(a[i]!=b[i]) return false;
+        }
+        return true;
+    }
 public:
     bool checkInclusion(string s1, string s2) {
-        if(s1.length()>s2.length())
-            return false;
-         bool equal=true; 
-        vector<int> sp1(27,0);
-        vector<int> sp2(27,0);
-           for(int i=0;i<s1.size();i++)
-            {
-              int n=s1[i]-96;
-              sp1[n]+=1;
-            }
+        if(s2.size()<s1.size()) return false;
+        vector<int> freqS1(26, 0);
+        for(char c: s1) freqS1[c-'a']++;
         
-        int window=s1.size();
-        for(int i=0;i<=s2.size()-window;i++)
-        {
-            bool equal=true; 
-            for(int k=i;k<window+i;k++)
-            {
-                 int n=s2[k]-96;
-                 sp2[n]+=1;
+        vector<int> freqS2(26, 0);
+        int i=0, j=0;
+        
+        while(j<s2.size()){
+            freqS2[s2[j]-'a']++;
+            
+            if(j-i+1==s1.size()){
+                if(areVectorsEqual(freqS1, freqS2)) return true;
             }
-            for(int j=1;j<27;j++)
-            {
-                if(sp1[j]!=sp2[j])
-                {
-                     equal = false;
-                    break;
-                }
-                
-            }
-            if(equal==true)
-                return true ;
-            else
-            {
-               fill(sp2.begin(),sp2.end(),0);  
+            
+            if(j-i+1<s1.size()) j++;
+            else{
+                freqS2[s2[i]-'a']--;
+                i++;
+                j++;
             }
         }
         return false;
