@@ -7,7 +7,7 @@ public:
            if(s[i]==' '&count==0)
                 continue;
             if(s[i]==' '&count>0)
-                break;
+                return count;
             else
                 count++;
         }
