@@ -6,8 +6,8 @@ public:
         int sum=0;
         for(int i=0;i<s.length();i++)
         {
-           int  index=s[i]-'a';
-            int n=widths[index];
+           // int  index=;
+            int n=widths[s[i]-'a'];
             if(sum+n<=100)
                 sum+=n;
             else
