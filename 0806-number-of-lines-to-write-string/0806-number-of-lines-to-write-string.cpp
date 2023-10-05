@@ -6,7 +6,6 @@ public:
         int sum=0;
         for(int i=0;i<s.length();i++)
         {
-           // int  index=;
             int n=widths[s[i]-'a'];
             if(sum+n<=100)
                 sum+=n;
