@@ -7,9 +7,10 @@ public:
         int end=col-1;
         while(start<row&&end>=0)
         {
-            if(matrix[start][end]==target)
+            int e=matrix[start][end];
+            if(e==target)
                 return true;
-            else if(target>matrix[start][end])
+            else if(target>e)
                 start++;
         else
             end--;
