@@ -6,8 +6,8 @@ public:
             return false;
         for(int i=0;i<words.size();i++)
         {
-            string st=words[i];
-            if(st[0]!=s[i])
+            
+            if(words[i][0]!=s[i])
                 return false;
         }
         return true;
