@@ -4,7 +4,7 @@ public:
      int count=0;
         vector<bool> prime(n+1,true);
         //base condition
-        prime[0]=prime[1]=false;
+        prime[0]=prime[1]=0;
         for(int i=2;i<n;i++)
         {
             if(prime[i])
@@ -12,7 +12,7 @@ public:
                 count++;
                 for(int j=2*i;j<n;j=j+i)
                 {
-                    prime[j]=false;
+                    prime[j]=0;
                 }
             }
         }
