@@ -13,20 +13,21 @@ public:
     ListNode* deleteDuplicates(ListNode* head) {
       if(head==NULL)
             return head;
-        ListNode * prev = head;
-        ListNode *curr = prev->next;
+        ListNode *curr =head; 
         
         while(curr!=NULL)
         {
-            if(curr->val!=prev->val)
+            if((curr->next!=NULL)&&curr->next->val==curr->val)
             {
-                prev=curr;
-                curr=curr->next;
+                  ListNode* next_next =curr->next->next;
+                 ListNode* todelete =  curr->next;
+                delete(todelete);
+                curr->next= next_next;
             }
             else
             {
                 curr=curr->next;
-                prev->next=curr;
+                
             }
         }
         
