@@ -72,9 +72,9 @@ public:
     ListNode* sortList(ListNode* head) {
 //         base case
         if(head==NULL || head->next==NULL)
-        {
+        
             return head;
-        }
+        
         
 //         finding mid of list
         ListNode* mid = findmid(head);
@@ -86,9 +86,7 @@ public:
         
 //         recursive sort of two lists
         left= sortList(left);
-        
         right=sortList(right);
-        
         ListNode* result = merge(left, right);
         
         return result;
