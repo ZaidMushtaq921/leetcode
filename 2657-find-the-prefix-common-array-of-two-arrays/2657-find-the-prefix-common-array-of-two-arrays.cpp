@@ -5,7 +5,7 @@ public:
         unordered_map<int, int> m;
 
         int count = 0;
-        for (int i = 0, j = 0; i < A.size() && j < B.size(); i++, j++) {
+        for (int i = 0, j = 0; i < A.size(); i++, j++) {
             m[A[i]]++;
              if (m[A[i]] > 1) {
                 count++;
