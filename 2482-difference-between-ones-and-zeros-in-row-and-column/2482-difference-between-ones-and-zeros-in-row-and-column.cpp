@@ -1,55 +1,33 @@
 class Solution {
 public:
     vector<vector<int>> onesMinusZeros(vector<vector<int>>& grid) {
-        vector<pair<int,int>> rowpair;
-        vector<pair<int,int>> colpair;
-         vector<vector<int>> result;
-        for(int i=0;i<grid.size();i++)
-        {
-            int zerocount=0;
-            int onecount=0;
-            for(int j=0;j<grid[0].size();j++)
-            {
-                if(grid[i][j]==0)
-                {
-                   zerocount++; 
+        int n = grid.size(), m = grid[0].size();
+        
+        // Initialize the 'diff' vector with the same size as the input grid
+        vector<vector<int>> diff(n, vector<int>(m, 0));
+        
+        vector<int> rowDiff(n, 0);
+        vector<int> colDiff(m, 0);
+        
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < m; j++){
+                if(grid[i][j] == 1){
+                    rowDiff[i]++;
+                    colDiff[j]++;
                 }
-                else
-                {
-                    onecount++;
-                }
-            }
-            rowpair.push_back(make_pair(zerocount,onecount));
-        }
-          for(int i=0;i<grid[0].size();i++)
-        {
-            int zerocount=0;
-            int onecount=0;
-            for(int j=0;j<grid.size();j++)
-            {
-                if(grid[j][i]==0)
-                {
-                   zerocount++; 
-                }
-                else
-                {
-                    onecount++;
+                else {
+                    rowDiff[i]--;
+                    colDiff[j]--;
                 }
             }
-            colpair.push_back(make_pair(zerocount,onecount));
         }
-
-          for(int i=0;i<rowpair.size();i++)
-        {
-            vector<int> x;
-            for(int j=0;j<colpair.size();j++)
-            {
-                int diff = rowpair[i].second +colpair[j].second - rowpair[i].first                     -colpair[j].first;
-                
-                x.push_back(diff);
+        
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < m; j++){
+                diff[i][j] = rowDiff[i] + colDiff[j];
             }
-            result.push_back(x);
         }
-        return result;
+        
+        return diff;
     }
 };
