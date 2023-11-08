@@ -10,7 +10,7 @@ class Solution {
 }
 public:
     int countDistinctIntegers(vector<int>& nums) {
-        set<int> dis;
+        unordered_set<int> dis;
         int x;
         for(int i=0;i<nums.size();i++)
          {
