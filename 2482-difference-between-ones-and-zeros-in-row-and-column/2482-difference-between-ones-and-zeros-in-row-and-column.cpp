@@ -2,8 +2,6 @@ class Solution {
 public:
     vector<vector<int>> onesMinusZeros(vector<vector<int>>& grid) {
         int n = grid.size(), m = grid[0].size();
-        
-        // Initialize the 'diff' vector with the same size as the input grid
         vector<vector<int>> diff(n, vector<int>(m, 0));
         
         vector<int> rowDiff(n, 0);
