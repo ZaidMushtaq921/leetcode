@@ -9,7 +9,6 @@ public:
             if (i + 1 < s.length() && s[i] == s[i + 1]) {
                 count++;
             } else {
-                // Calculate the number of homogenous substrings and add it to the sum
                 sum = (sum + (count * (count + 1) / 2) % MOD) % MOD;
                 count = 1;
             }
