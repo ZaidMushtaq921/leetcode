@@ -1,7 +1,7 @@
 class Solution {
 public:
     string restoreString(string s, vector<int>& indices) {
-        string result(s.length(),' ');
+        string result=s;
         
         for(int i=0;i<s.length();i++)
         {
