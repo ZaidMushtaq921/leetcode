@@ -1,40 +1,22 @@
-class Solution {
+class Solution 
+{
 public:
-    vector<vector<int>> findWinners(vector<vector<int>>& matches) {
-       vector<vector<int>> answer(2); 
-        unordered_map<int,int> mloss;
-          unordered_map<int,int> mwon;
-        vector<int> result;
-        for(auto it: matches)
+    vector<vector<int>> findWinners(vector<vector<int>>& matches) 
+    {
+        map<int,int> lost;
+        for (auto m : matches)
         {
-            mwon[it[0]]++;
+            if (!lost.count(m[0])) lost[m[0]] = 0;
+            lost[m[1]]++;
         }
-        for(auto it: matches)
-        {
-            mloss[it[1]]++;
-        }
-        for(auto pair: mwon)
-        {
-            int key=pair.first;
-            auto it = mloss.find(key);
-            if(it==mloss.end())
-            {
-                result.push_back(key);
-            }  
-        }
-        sort(result.begin(),result.end());
-        answer[0]=(result);
-        result.clear();
-           for(auto pair: mloss)
-        {
-           if(pair.second==1)
-           {
-               result.push_back(pair.first);
-           }
-        }
-        sort(result.begin(),result.end());
-        answer[1]=(result);
-        return answer;
         
+        vector<int> zero, ones;
+        for (auto[k,l] : lost)
+        {
+            if (l == 0) zero.push_back(k);
+            if (l == 1) ones.push_back(k);
+        }
+        
+        return {zero,ones};
     }
 };
