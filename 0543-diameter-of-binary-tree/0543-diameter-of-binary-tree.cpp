@@ -11,13 +11,13 @@
  */
 class Solution {
 private:
-      int maxDepth(TreeNode* root,int &diameter) {
+      int diameterfast(TreeNode* root,int &diameter) {
        if(root==NULL)
        {
            return 0;
        }
-        int h1= maxDepth(root->left,diameter);
-        int h2= maxDepth(root->right,diameter);
+        int h1= diameterfast(root->left,diameter);
+        int h2= diameterfast(root->right,diameter);
          diameter=max(diameter,h1+h2);
           return  max(h1,h2)+1;
      
@@ -25,7 +25,7 @@ private:
     public:
     int diameterOfBinaryTree(TreeNode* root) {
         int d=0;
-        maxDepth(root,d);
+        diameterfast(root,d);
         return d;
     }
 };
