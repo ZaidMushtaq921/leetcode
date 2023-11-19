@@ -8,7 +8,7 @@ public:
             {
                     if(nums[i]!=nums[i+1])
                     {
-                            count+=(n-1-i);
+                            count=count+(n-1-i);
                     }         
             }
             return count;
