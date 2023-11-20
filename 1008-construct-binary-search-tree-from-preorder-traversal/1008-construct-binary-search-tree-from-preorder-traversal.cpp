@@ -10,34 +10,31 @@
  * };
  */
 class Solution {
-        private:
-        
-      void  insertion(TreeNode* &head,int data)
-        {
-                if(head==NULL)
-                {
-                        TreeNode* node= new TreeNode(data);
-                        head=node;
-                        return;
-                }
-                else if(data>head->val)
-                {
-                        insertion(head->right,data);
-                }
-                else
-                {
-                       insertion(head->left,data);  
-                }     
-        }
-        
-        
+private:
+    TreeNode* BST(vector<int>& preorder, int &index, long long leftlimit, long long rightlimit) {
+        if (index >= preorder.size())
+            return NULL;
+
+        int element = preorder[index];
+
+        // Check if the current element is within the valid range for the current node
+        if (element < leftlimit || element > rightlimit)
+            return NULL;
+index++;
+        // Create a new TreeNode with the current element
+        TreeNode* node = new TreeNode(element);
+
+        // Recursively build the left and right subtrees
+        node->left = BST(preorder, index, leftlimit, element);
+        node->right = BST(preorder, index, element, rightlimit);
+
+        return node;
+    }
+
 public:
     TreeNode* bstFromPreorder(vector<int>& preorder) {
-        TreeNode * head=new TreeNode(preorder[0]);
-            for(int i=1;i<preorder.size();i++)
-            {
-                insertion(head,preorder[i]) ;   
-            }
-         return head;
+        // Initialize the BST construction with the entire range of INT_MIN to INT_MAX
+       int index=0;
+            return BST(preorder, index, INT_MIN, INT_MAX);
     }
 };
