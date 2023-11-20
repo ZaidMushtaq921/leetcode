@@ -10,7 +10,7 @@
  * };
  */
 class Solution {
-       TreeNode* balanceTree(vector<int> nums,int l,int r)
+       TreeNode* balanceTree(vector<int> &nums,int l,int r)
        {
                if(l>r)
                {
