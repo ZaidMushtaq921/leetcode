@@ -9,7 +9,7 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-  void levelorder(TreeNode* root, vector<vector<int>> &result)
+  void levelorder(TreeNode* &root, vector<vector<int>> &result)
   {
           if(!root)
                   return;
