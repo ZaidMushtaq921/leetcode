@@ -8,7 +8,7 @@ public:
         for (int i=0; i<nums.size(); i++) {
             for (int j=0; j<nums[i].size(); j++) {
                 m[i+j].push_back(nums[i][j]); // insert nums[i][j] in bucket (i+j).
-                maxKey = max(maxKey, i+j); // 
+                maxKey = max(maxKey, i+j); // keep track of largest row
             }
         }
         for (int i=0; i<= maxKey; i++) { // Each diagonal starting with sum 0 to sum maxKey.
