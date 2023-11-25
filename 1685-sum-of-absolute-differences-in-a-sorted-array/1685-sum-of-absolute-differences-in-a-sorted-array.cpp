@@ -13,7 +13,7 @@ public:
             int size=nums.size();
          for( int i=0;i<size;i++)
          {
-                int val= abs(prefix_sum-(nums[i]*(i-0))) + abs(suffix_sum-(nums[i]*(size-i)));
+                int val= abs(prefix_sum-(nums[i]*i)) + abs(suffix_sum-(nums[i]*(size-i)));
                  
                  result.push_back(val);
                  suffix_sum-=nums[i];
