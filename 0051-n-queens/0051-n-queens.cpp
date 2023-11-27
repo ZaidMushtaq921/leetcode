@@ -1,11 +1,10 @@
-#include <vector>
-#include <string>
+
 
 class Solution {
 public:
-    std::vector<std::vector<std::string>> solveNQueens(int n) {
-        std::vector<std::vector<std::string>> result;
-        std::vector<std::string> board(n, std::string(n, '.'));
+    vector<vector<string>> solveNQueens(int n) {
+        vector<vector<string>> result;
+        vector<string> board(n, string(n, '.'));
 
         solveNQueensHelper(board, 0, result);
 
@@ -13,7 +12,7 @@ public:
     }
 
 private:
-    void solveNQueensHelper(std::vector<std::string>& board, int row, std::vector<std::vector<std::string>>& result) {
+    void solveNQueensHelper(vector<string>& board, int row, vector<vector<string>>& result) {
         if (row == board.size()) {
             result.push_back(board);
             return;
@@ -28,7 +27,7 @@ private:
         }
     }
 
-    bool is_valid(const std::vector<std::string>& board, int row, int col) const {
+    bool is_valid(const vector<string>& board, int row, int col) const {
         for (int i = 0; i < row; ++i) {
             if (board[i][col] == 'Q' || 
                 (col - (row - i) >= 0 && board[i][col - (row - i)] == 'Q') || 
