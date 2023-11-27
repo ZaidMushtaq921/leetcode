@@ -1,41 +1,41 @@
+#include <vector>
+#include <string>
+
 class Solution {
 public:
-    vector<vector<string>> ret;
-    bool is_valid(vector<string> &board, int row, int col){
-        // check col
-        for(int i=row;i>=0;--i)
-            if(board[i][col] == 'Q') return false;
-        // check left diagonal
-        for(int i=row,j=col;i>=0&&j>=0;--i,--j)
-            if(board[i][j] == 'Q') return false;
-        //check right diagonal
-        for(int i=row,j=col;i>=0&&j<board.size();--i,++j)
-            if(board[i][j] == 'Q') return false;
-        return true;
+    std::vector<std::vector<std::string>> solveNQueens(int n) {
+        std::vector<std::vector<std::string>> result;
+        std::vector<std::string> board(n, std::string(n, '.'));
+
+        solveNQueensHelper(board, 0, result);
+
+        return result;
     }
-    void dfs(vector<string> &board, int row){
-        // exit condition
-        if(row == board.size()){
-            ret.push_back(board);
+
+private:
+    void solveNQueensHelper(std::vector<std::string>& board, int row, std::vector<std::vector<std::string>>& result) {
+        if (row == board.size()) {
+            result.push_back(board);
             return;
         }
-        // iterate every possible position
-        for(int i=0;i<board.size();++i){
-            if(is_valid(board,row,i)){
-                // make decision
-                board[row][i] = 'Q';
-                // next iteration
-                dfs(board,row+1);
-                // back-tracking
-                board[row][i] = '.';
+
+        for (int col = 0; col < board.size(); ++col) {
+            if (is_valid(board, row, col)) {
+                board[row][col] = 'Q';
+                solveNQueensHelper(board, row + 1, result);
+                board[row][col] = '.';
             }
         }
     }
-    vector<vector<string>> solveNQueens(int n) {
-		// return empty if n <= 0
-        if(n <= 0) return {{}};
-        vector<string> board(n,string(n,'.'));
-        dfs(board,0);
-        return ret;
+
+    bool is_valid(const std::vector<std::string>& board, int row, int col) const {
+        for (int i = 0; i < row; ++i) {
+            if (board[i][col] == 'Q' || 
+                (col - (row - i) >= 0 && board[i][col - (row - i)] == 'Q') || 
+                (col + (row - i) < board.size() && board[i][col + (row - i)] == 'Q')) {
+                return false;
+            }
+        }
+        return true;
     }
 };
