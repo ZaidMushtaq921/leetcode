@@ -59,7 +59,7 @@ class Solution {
     vector<int> indegree(V);
 
     // Vector to store the final topological order
-    vector<int> ans;
+    int count=0;
 
     // Calculate in-degrees for each vertex
     for(int i = 0; i < V; i++)
@@ -90,7 +90,7 @@ class Solution {
         q.pop();
 
         // Add the vertex to the topological order
-        ans.push_back(front);
+        count++;
 
         // Update in-degrees of neighbors and enqueue if in-degree becomes 0
         for(auto neighbor : adj[front])
@@ -102,7 +102,7 @@ class Solution {
             }
         }
     }
-if(ans.size()<V)
+if(count<V)
 return true;
 return false;
     }
