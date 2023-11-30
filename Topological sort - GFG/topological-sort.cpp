@@ -44,45 +44,66 @@ class Solution
 	   return result;
 	}
 };*/
-	vector<int> topoSort(int V, vector<int> adj[]) 
-	{
-	    vector<int> indegree(V);
-	    vector<int> ans;
-	    for(int i=0;i<V;i++)
-	    {
-	        for(auto neighbor: adj[i])
-	        {
-	            indegree[neighbor]++;
-	            
-	        }
-	    }
-	    queue<int> q;
-	    for(int i=0;i<indegree.size();i++)
-	    {
-	        if(indegree[i]==0)
-	        {
-	            q.push(i);
-	        }
-	    }
-	    
-	    while(!q.empty())
-	    {
-	        int front=q.front();
-	        q.pop();
-	        ans.push_back(front);
-	        for(auto neighbor: adj[front])
-	        {
-	            indegree[neighbor]--;
-	            if(indegree[neighbor]==0)
-	            {
-	                q.push(neighbor);
-	            }
-	        }
-	        
-	    }
-	    
+// Function to perform topological sorting on a directed graph
+// Parameters:
+//   - V: Number of vertices in the graph
+//   - adj: An array of vectors representing the adjacency list of the graph
+// Returns:
+//   - A vector representing the topological order of the vertices
+vector<int> topoSort(int V, vector<int> adj[]) 
+{
+    // Vector to store the in-degree of each vertex
+    vector<int> indegree(V);
+
+    // Vector to store the final topological order
+    vector<int> ans;
+
+    // Calculate in-degrees for each vertex
+    for(int i = 0; i < V; i++)
+    {
+        for(auto neighbor : adj[i])
+        {
+            indegree[neighbor]++;
+        }
+    }
+
+    // Queue to store vertices with in-degree 0
+    queue<int> q;
+
+    // Initialize the queue with vertices having in-degree 0
+    for(int i = 0; i < indegree.size(); i++)
+    {
+        if(indegree[i] == 0)
+        {
+            q.push(i);
+        }
+    }
+
+    // Perform BFS to find the topological order
+    while(!q.empty())
+    {
+        // Get the front of the queue
+        int front = q.front();
+        q.pop();
+
+        // Add the vertex to the topological order
+        ans.push_back(front);
+
+        // Update in-degrees of neighbors and enqueue if in-degree becomes 0
+        for(auto neighbor : adj[front])
+        {
+            indegree[neighbor]--;
+            if(indegree[neighbor] == 0)
+            {
+                q.push(neighbor);
+            }
+        }
+    }
+
+    // Return the topological order
     return ans;
-	}
+}
+
 };
 
 
