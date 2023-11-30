@@ -1,24 +1,15 @@
 class Solution {
 public:
     vector<int> findSmallestSetOfVertices(int n, vector<vector<int>>& edges) {
-      unordered_map<int,list<int>> adj;
-            
+      
+         vector<int> indegree(n);    
      for(int i=0;i<edges.size();i++ )
      {
-            int u= edges[i][0];
-             int v= edges[i][1];
-             
-             adj[u].push_back(v);        
+            
+          indegree[edges[i][1]]++;   
+                   
      }
-       
-      vector<int> indegree(n);
-            for(auto i: adj)
-            {
-                    for(auto neighbor: i.second)
-                    {
-                            indegree[neighbor]++;
-                    }     
-            }
+          
             vector<int> ans;
             for(int i=0;i<n;i++)
             {
