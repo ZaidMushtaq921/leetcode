@@ -7,7 +7,7 @@ class Solution
 {
 
 	public:
-	void dfs(int node,vector<int> adj[],  unordered_map<int,bool>& visited, stack<int> &ans)
+/*	void dfs(int node,vector<int> adj[],  unordered_map<int,bool>& visited, stack<int> &ans)
 	{
 	    visited[node]=true;
 	    for(auto nbr: adj[node])
@@ -43,7 +43,48 @@ class Solution
 	   }
 	   return result;
 	}
+};*/
+	vector<int> topoSort(int V, vector<int> adj[]) 
+	{
+	    vector<int> indegree(V);
+	    vector<int> ans;
+	    for(int i=0;i<V;i++)
+	    {
+	        for(auto neighbor: adj[i])
+	        {
+	            indegree[neighbor]++;
+	            
+	        }
+	    }
+	    queue<int> q;
+	    for(int i=0;i<indegree.size();i++)
+	    {
+	        if(indegree[i]==0)
+	        {
+	            q.push(i);
+	        }
+	    }
+	    
+	    while(!q.empty())
+	    {
+	        int front=q.front();
+	        q.pop();
+	        ans.push_back(front);
+	        for(auto neighbor: adj[front])
+	        {
+	            indegree[neighbor]--;
+	            if(indegree[neighbor]==0)
+	            {
+	                q.push(neighbor);
+	            }
+	        }
+	        
+	    }
+	    
+    return ans;
+	}
 };
+
 
 //{ Driver Code Starts.
 
