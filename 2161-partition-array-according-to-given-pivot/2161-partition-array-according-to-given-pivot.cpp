@@ -1,7 +1,7 @@
 class Solution
 {
     public:
-   vector<int> pivotArray(vector<int>& nums, int pivot) {
+       vector<int> pivotArray(vector<int>& nums, int pivot) {
     int low = 0, same = 0, high = nums.size();
     for(auto n : nums) {
         if(n < pivot) 
