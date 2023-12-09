@@ -16,9 +16,9 @@ class Solution
                     {
                         int up = INT_MAX;
                         int left = INT_MAX;
-                        if (i > 0) up = grid[i][j] + prev[j];
-                        if (j > 0) left = grid[i][j] + curr[j - 1];
-                        curr[j] = min(up, left);
+                        if (i > 0) up =   prev[j];
+                        if (j > 0) left =   curr[j - 1];
+                        curr[j] = min(up, left)+grid[i][j];
                     }
                 }
  prev = curr;
