@@ -3,31 +3,15 @@ using namespace std;
 
 class Solution {
 public:
-    static bool comp(pair<int, int> a, pair<int, int> b) {
-        return a.first - a.second < b.first - b.second;
+ int maximumBags(vector<int>& C, vector<int>& R, int add) {
+    int n = size(R), cnt=0;
+    for(int i = 0;i < n; i++) R[i] = C[i] - R[i];
+    sort(begin(R), end(R));
+    for(int i = 0;i < n && R[i] - add <= 0; i++) 
+    {
+            cnt++; 
+            add -= R[i];
     }
-
-    int maximumBags(vector<int> &capacity, vector<int> &rocks, int additionalRocks) {
-        int count = 0;
-        vector<pair<int, int>> p;
-
-        for (int i = 0; i < rocks.size(); i++) {
-            p.emplace_back(capacity[i], rocks[i]);
-        }
-
-        sort(p.begin(), p.end(), comp);
-
-        for (const auto& [c, r] : p) {
-            if (c == r) {
-                count++;
-            } else if (additionalRocks >= c - r) {
-                additionalRocks -= c - r;
-                count++;
-            } else {
-                break; // Stop checking once additionalRocks are not enough
-            }
-        }
-
-        return count;
-    }
+    return cnt;
+}
 };
