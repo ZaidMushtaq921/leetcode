@@ -8,11 +8,11 @@ class Solution
             while (i < j)
             {
                     
-                if (s[i] - 'a'<s[j] - 'a')
+                if (s[i] <s[j])
                 {
                     s[j] = s[i];
                 }
-                else if(s[i] - 'a' > s[j] - 'a')
+                else if(s[i] > s[j] )
                 {
                     s[i] = s[j];
                 }
