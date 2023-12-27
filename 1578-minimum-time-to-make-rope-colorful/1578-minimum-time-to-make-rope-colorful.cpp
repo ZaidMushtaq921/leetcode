@@ -7,7 +7,7 @@ class Solution
                 return 0;
             int count = 0;
 
-                int prev=0;
+            int prev = 0;
             for (int i = 1; i < colors.size(); i++)
             {
                 if (colors[prev] == colors[i])
@@ -17,16 +17,16 @@ class Solution
                         count += neededTime[i];
                     }
                     else
-                      { 
-                            count += neededTime[prev];
-                            prev=i;
-                      }
-                }
-                    else
                     {
-                            prev=i;
+                        count += neededTime[prev];
+                        prev = i;
                     }
+                }
+                else
+                {
+                    prev = i;
+                }
             }
-                return count;
+            return count;
         }
 };
