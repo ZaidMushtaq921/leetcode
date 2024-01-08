@@ -11,22 +11,22 @@
  */
 class Solution {
     private:
-int sum(TreeNode* root,int &s,int l, int h)
+    int s=0;
+int sum(TreeNode* root,int l, int h)
 {
     if(root==NULL)
         return NULL;
     if(root->val>=l&& root->val<=h)
         s+=root->val;
-    sum(root->left,s,l,h);
-        sum(root->right,s,l,h);
+    sum(root->left,l,h);
+        sum(root->right,l,h);
 return s;
 }
     
     
     public:
     int rangeSumBST(TreeNode* root, int low, int high) {
-       int s=0;
-       return sum(root,s,low,high); 
+       return sum(root,low,high); 
         
         
     }
