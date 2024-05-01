@@ -1,11 +1,9 @@
-#include <vector>
-#include <map>
 
 class Solution {
 public:
-    std::vector<int> findIntersectionValues(std::vector<int>& nums1, std::vector<int>& nums2) {
-        std::map<int, int> m;
-        std::map<int, int> n;
+    vector<int> findIntersectionValues(vector<int>& nums1, vector<int>& nums2) {
+        map<int, int> m;
+        map<int, int> n;
 
         for (int num : nums1) {
             m[num]++;
