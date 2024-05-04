@@ -8,18 +8,12 @@ public:
         while(i<=j)
         {
             int sum=people[i]+people[j];
-            if(sum>limit)
+            if(sum<=limit)
             {
-                minBoats++;
-                j--;
-            }
-            else if(sum<=limit)
-            {
-                minBoats++;
-                j--;
                 i++;
-            }   
-            
+            }
+                minBoats++;
+                j--;  
         }
         return minBoats;
         
